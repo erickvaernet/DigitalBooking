@@ -2,5 +2,3 @@
 
 * Backend: Con Spring Framework en el back 
 * Frontend: Con React
-
-## ...En Proceso...
