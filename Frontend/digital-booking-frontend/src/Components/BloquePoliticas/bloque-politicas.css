@@ -1,0 +1,53 @@
+.bloque_politicas {
+  padding-top: 30px;
+  padding-left: 20px;
+  width: 80%;
+}
+
+.bloque_politicas h3 {
+  padding: 30px 0px;
+}
+.reglas-container p {
+  line-height: 40px;
+}
+.seguridad-container p {
+  padding-top: 15px;
+}
+@media screen and (min-width: 768px) {
+  .bloque_politicas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    padding-left: 40px;
+  }
+  .reglas-container {
+    width: 20em;
+  }
+  .seguridad-container {
+    width: 20em;
+  }
+  .cancelacion-container {
+    width: 20em;
+    padding-top: 30px;
+  }
+  .seguridad-container h3 {
+    padding-bottom: 16px;
+  }
+}
+
+/* DESKTOP*/
+
+@media (min-width: 992px) {
+  .bloque_politicas {
+    align-items: flex-start;
+    justify-content: start;
+    padding-top: 10px;
+  }
+  .cancelacion-container {
+    padding-top: 0px;
+  }
+  .seguridad-container h3 {
+    padding-bottom: 16px;
+  }
+}

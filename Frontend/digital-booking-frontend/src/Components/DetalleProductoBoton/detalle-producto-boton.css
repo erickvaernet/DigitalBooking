@@ -1,0 +1,30 @@
+.contenedor-boton p {
+  color: red;
+  padding-bottom: 10px;
+  font-size: 0.8rem;
+}
+
+.contenedor-boton button {
+  background: var(--color-principal);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+  height: 50px;
+  width: 100%;
+  color: #ffffff;
+  outline: none;
+  border-color: transparent;
+  margin-bottom: 18px;
+  margin-top: 36px;
+  cursor: pointer;
+}
+
+.contenedor-boton button:hover {
+  background-color: var(--color-tres);
+}
+
+/* Modelo adaptativo destokp */
+@media screen and (min-width: 992px) {
+  .contenedor-boton button {
+    margin-top: 36px;
+  }
+}

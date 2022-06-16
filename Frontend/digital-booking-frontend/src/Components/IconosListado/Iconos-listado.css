@@ -1,0 +1,10 @@
+.iconos-listado{
+    padding-top: 7.66px;
+    display: flex;
+    gap: 10.77px;
+    font-size: 13.22px;
+    color: var(--color-dos);
+    align-items: center;
+    padding-bottom: 29px;
+    
+}
