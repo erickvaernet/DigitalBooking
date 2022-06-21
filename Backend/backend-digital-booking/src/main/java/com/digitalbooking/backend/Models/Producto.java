@@ -1,6 +1,7 @@
 package com.digitalbooking.backend.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
@@ -49,5 +50,9 @@ public class Producto {
             inverseJoinColumns = @JoinColumn(name="politica_id")
     )
     private Set<Politica> politicas;
+
+    @OneToMany(mappedBy = "producto")
+    @JsonIgnore
+    private Set<Reserva> reservas;
 
 }

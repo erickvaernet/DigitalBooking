@@ -15,17 +15,16 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotNull
+    @Column(nullable = false)
     private String nombre;
-    @NotNull
+    @Column(nullable = false)
     private String apellido;
     @Column(unique = true, nullable = false)
     private String nombreUsuario;
     @Column(unique = true, nullable = false)
     private String email;
-    @NotNull
+    @Column(nullable = false)
     private String password;
-    @NotNull
     @ManyToMany
     @JoinTable(name = "usuarios_x_roles",
             joinColumns = @JoinColumn(name = "usuario_id"),
@@ -35,11 +34,11 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(@NotNull String nombre,
-                   @NotNull String apellido,
-                   @NotNull String nombreUsuario,
-                   @NotNull String email,
-                   @NotNull String password) {
+    public Usuario( String nombre,
+                    String apellido,
+                    String nombreUsuario,
+                    String email,
+                    String password) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.nombreUsuario = nombreUsuario;

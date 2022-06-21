@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { GetProductById } from "../../service/productoService";
-import StarRating from "../Estrellas/StarRating";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
-import "./detalle-reserva.css";
+import StarRating from "../Estrellas/StarRating";
+import { GetProductById } from "../../service/productoService";
 import DetalleReservaCheck from "../DetalleReservaCheck/DetalleReservaCheck";
 import DetalleProductoBoton from "../DetalleProductoBoton/DetalleProductoBoton";
+
+import "./detalle-reserva.css";
+import { userContext } from "../../context/UserContext";
+
 const checkIn = "Check in";
 const checkOut = "Check out";
+
 const DetalleReserva = () => {
   const { id } = useParams();
+  const { user, setUser } = useContext(userContext);
 
   const [product, setProduct] = useState([]);
 
@@ -42,9 +48,15 @@ const DetalleReserva = () => {
             </p>
           </div>
           <hr />
-          <DetalleReservaCheck check={checkIn} />
+          <DetalleReservaCheck
+            check={checkIn}
+            fecha={user?.reserva?.fechaInicial}
+          />
           <hr />
-          <DetalleReservaCheck check={checkOut} />
+          <DetalleReservaCheck
+            check={checkOut}
+            fecha={user?.reserva?.fechaFinal}
+          />
           <hr />
           <DetalleProductoBoton />
         </div>

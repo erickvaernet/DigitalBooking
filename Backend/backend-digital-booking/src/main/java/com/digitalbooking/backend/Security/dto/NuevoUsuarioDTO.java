@@ -25,5 +25,7 @@ public class NuevoUsuarioDTO {
     //Por defecto crea un usuario normal
     //Si quiero un usuario Admin debo pasar este campo roles
     private Set<String> roles = new HashSet<>();
+    //se agrega una contraseña  para agregar rol admin
+    private String rolPassword;
 
 }

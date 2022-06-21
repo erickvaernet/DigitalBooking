@@ -5,6 +5,7 @@ import com.digitalbooking.backend.Security.dto.LoginUsuarioDTO;
 import com.digitalbooking.backend.Security.dto.NuevoUsuarioDTO;
 import com.digitalbooking.backend.Security.entity.Rol;
 import com.digitalbooking.backend.Security.entity.Usuario;
+import com.digitalbooking.backend.Security.entity.UsuarioMain;
 import com.digitalbooking.backend.Security.enums.RolNombre;
 import com.digitalbooking.backend.Security.jwt.JwtProvider;
 import com.digitalbooking.backend.Security.service.RolService;
@@ -44,7 +45,6 @@ public class AuthController {
     @PostMapping("/nuevoUsuario")
     public ResponseEntity<?> nuevoUsuario(@Valid @RequestBody NuevoUsuarioDTO nuevoUsuario,
                                           BindingResult bindingResult){
-
         /*
         if(bindingResult.hasErrors()){
             return new ResponseEntity<>(new Mensaje("Campos mal o email invalido"), HttpStatus.BAD_REQUEST);
@@ -61,10 +61,12 @@ public class AuthController {
 
         Set<Rol> roles = new HashSet<>();
         roles.add(rolService.findByRolNombre(RolNombre.ROLE_USER).get());
-        /*
-        if(nuevoUsuario.getRoles().contains("admin"))
+        if(
+            nuevoUsuario.getRoles().contains("ROLE_ADMIN")
+            && nuevoUsuario.getRolPassword().contains("RSEu$mZ!XDIQ@9WbixjYviyym3fWimm7lVwfDyPHxXwustcC$!")
+        )
             roles.add(rolService.findByRolNombre(RolNombre.ROLE_ADMIN).get());
-         */
+
         usuario.setRoles(roles);
         usuarioService.save(usuario);
         return new ResponseEntity<>(HttpStatus.CREATED);
@@ -83,7 +85,9 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtProvider.generateToken(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        JwtDTO jwtDto = new JwtDTO(jwt, userDetails.getUsername(), userDetails.getAuthorities());
+        //Leer mas de jwt y security para mejorar esto, la linea d eabajo creo que no deberia ir
+        UsuarioMain user= UsuarioMain.build(usuarioService.findByNombreUsuario(userDetails.getUsername()).get());
+        JwtDTO jwtDto = new JwtDTO(jwt, userDetails.getUsername(),user.getNombre(),user.getApellido(), user.getEmail(), userDetails.getAuthorities());
         return new ResponseEntity<>(jwtDto, HttpStatus.OK);
     }
 }

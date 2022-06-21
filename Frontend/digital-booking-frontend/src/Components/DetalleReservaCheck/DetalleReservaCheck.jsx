@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./detalle-reserva-check.css";
 
 export default function DetalleReservaCheck(props) {

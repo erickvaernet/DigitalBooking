@@ -5,8 +5,10 @@ import com.digitalbooking.backend.Dto.PaginaDTO;
 import com.digitalbooking.backend.Dto.ProductoDTO;
 import com.digitalbooking.backend.Exceptions.EntityNotFoundException;
 import com.digitalbooking.backend.Exceptions.InvalidIdException;
+import com.digitalbooking.backend.Filtros.FiltroProductos;
 import com.digitalbooking.backend.Models.Producto;
 import com.digitalbooking.backend.Repository.IProductoRepository;
+import com.digitalbooking.backend.Repository.custom.CustomPage;
 import com.digitalbooking.backend.Services.IProductoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,6 +100,19 @@ public class ProductoService implements IProductoService {
         long numeroProductos = paginaProductos.getTotalElements();
         List<ProductoDTO> listaProductosDto=
                 listaProductos.stream().map(this::mapDTO).collect(Collectors.toList());
+        return new PaginaDTO<>(page,size,numeroProductos,listaProductosDto);
+    }
+
+    @Override
+    public PaginaDTO findByFilters(FiltroProductos filtros, Integer page, Integer size) {
+        page=page==null?0:page;
+        size=size==null?8:size;
+        Pageable pageRequest= PageRequest.of(page,size);
+        CustomPage<Producto> customPage = productoRepository.findByFilters(filtros,pageRequest);
+        List<Producto> listaProductos =  customPage.getContent();
+        List<ProductoDTO> listaProductosDto=
+                listaProductos.stream().map(this::mapDTO).collect(Collectors.toList());
+        long numeroProductos = customPage.getTotalElements();
         return new PaginaDTO<>(page,size,numeroProductos,listaProductosDto);
     }
 

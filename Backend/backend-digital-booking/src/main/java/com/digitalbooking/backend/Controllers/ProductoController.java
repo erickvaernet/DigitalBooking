@@ -2,14 +2,17 @@ package com.digitalbooking.backend.Controllers;
 
 import com.digitalbooking.backend.Dto.PaginaDTO;
 import com.digitalbooking.backend.Dto.ProductoDTO;
+import com.digitalbooking.backend.Filtros.FiltroProductos;
 import com.digitalbooking.backend.Services.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 @CrossOrigin
 @RestController
@@ -52,13 +55,28 @@ public class ProductoController {
             @RequestParam(value = "tamanio", required = false)Integer size,
             @RequestParam(value = "ciudad_id", required = false)Integer ciudadId,
             @RequestParam(value = "categoria_id", required = false)Integer categoriaId,
+            @RequestParam(value = "fecha_inicio", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaInicio,
+            @RequestParam(value = "fecha_fin", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin,
             HttpServletRequest request
     ) {
+
         PaginaDTO<ProductoDTO> paginaProductos;
 
+
+    /*
         if(ciudadId!=null) paginaProductos = productoService.findByCiudadId(ciudadId, page, size);
         else if(categoriaId!=null) paginaProductos = productoService.findByCategoriaId(categoriaId, page, size);
         else paginaProductos = productoService.findAll(page, size);
+*/
+
+        FiltroProductos filtros = new FiltroProductos();
+        if(ciudadId!=null) filtros.setCiudadId(ciudadId);
+        if(categoriaId!=null) filtros.setCategoriaId(categoriaId);
+        if(fechaInicio!=null && fechaFin!=null){
+            filtros.setFechaInicio(fechaInicio);
+            filtros.setFechaFin(fechaFin);
+        }
+        paginaProductos = productoService.findByFilters(filtros, page, size);
 
         String url= request.getRequestURL().toString();
         paginaProductos.setUrlBase(url);
