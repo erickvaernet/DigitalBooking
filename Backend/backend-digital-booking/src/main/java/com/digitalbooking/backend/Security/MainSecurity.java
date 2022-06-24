@@ -56,7 +56,6 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //Sacar .cors()
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/**").permitAll()

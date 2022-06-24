@@ -8,10 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Subquery;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 @Component
@@ -51,22 +48,26 @@ public class CustomProductoRepositoryImpl implements  CustomProductoRepository {
 
     private void buildQueryWithFilters
             (FiltroProductos filtros, CriteriaBuilder cb, CriteriaQuery<?> cq, Root<?> root) {
+
+        Predicate restrictions = cb.conjunction();
         if (filtros.hasCiudadId())
-            cq.where(cb.equal(root.get("ciudad").get("id"), filtros.getCiudadId()));
+            restrictions = cb.and(restrictions, cb.equal(root.get("ciudad").get("id"), filtros.getCiudadId()));
         if (filtros.hasCategoriaId()) {
-            cq.where(cb.equal(root.get("categoria").get("id"), filtros.getCategoriaId()));
+            restrictions = cb.and(restrictions, cb.equal(root.get("categoria").get("id"), filtros.getCategoriaId()));
         }
         if(filtros.hasPeriodo()) {
             Subquery<Integer> sub =cq.subquery(Integer.class);
             Root<Reserva> reservaRoot = sub.from(Reserva.class);
             sub.select(reservaRoot.get("producto").get("id"))
-                    .where(cb.between(reservaRoot.get("fechaInicial"),
-                            filtros.getFechaInicio(),
-                            filtros.getFechaFin()))
-                    .where(cb.between(reservaRoot.get("fechaFinal"),
-                    filtros.getFechaInicio(),
-                    filtros.getFechaFin()));
-            cq.where(cb.not(cb.in(root.get("id")).value(sub)));
+                    .where(cb.and(
+                            cb.between(reservaRoot.get("fechaInicial"),
+                                    filtros.getFechaInicio(),
+                                    filtros.getFechaFin()),
+                            cb.between(reservaRoot.get("fechaFinal"),
+                                    filtros.getFechaInicio(),
+                                    filtros.getFechaFin())));
+            restrictions = cb.and(restrictions,cb.not(cb.in(root.get("id")).value(sub)));
         }
+        cq.where(restrictions);
     }
 }

@@ -62,13 +62,6 @@ public class ProductoController {
 
         PaginaDTO<ProductoDTO> paginaProductos;
 
-
-    /*
-        if(ciudadId!=null) paginaProductos = productoService.findByCiudadId(ciudadId, page, size);
-        else if(categoriaId!=null) paginaProductos = productoService.findByCategoriaId(categoriaId, page, size);
-        else paginaProductos = productoService.findAll(page, size);
-*/
-
         FiltroProductos filtros = new FiltroProductos();
         if(ciudadId!=null) filtros.setCiudadId(ciudadId);
         if(categoriaId!=null) filtros.setCategoriaId(categoriaId);
