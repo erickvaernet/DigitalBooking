@@ -30,7 +30,7 @@ public class CustomProductoRepositoryImpl implements  CustomProductoRepository {
         List<Producto> result =
                 entityManager
                         .createQuery(cq)
-                        .setMaxResults(8)
+                        .setMaxResults(pageable.getPageSize())
                         .setFirstResult(pageable.getPageNumber() * pageable.getPageSize())
                         .getResultList();
         customPage.setContent(result);

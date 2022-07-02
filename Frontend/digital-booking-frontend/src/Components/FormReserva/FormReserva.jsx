@@ -1,46 +1,21 @@
-import React, { useState } from "react";
-
-import axios from "axios";
+import React, {useState } from "react";
 
 import "./form-reserva.css";
 
+
+
 const FormReserva = () => {
-  const [form, setForm] = useState({});
-
-  const handleChange = async (e) => {
-    await setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-    console.log(form);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("El formulario se ha enviado");
   };
 
-  // axios.get(`ciudades/por-nombre/{nombre}`, {
-  //     params:{ciudad: form.ciudad
-  //     }
-  // } )
-  // .then(function(response){
-  //     console.log(response.data);
-  // })
-  // .catch(function(error){
-  //     console.log(error)
-  // });
+  const userName = localStorage.getItem("userName");
+  const userLastName = localStorage.getItem("userLastName");
+  const userEmail = localStorage.getItem("userEmail");
+ 
+  const[vacuna, setVacuna]= useState("");
 
-  // iniciarSesion =async()=>{
-  //     await axios.get(baseUrl, {params:{nombre: form.nombre, apellido: form.apellido, email: form.email}})
-  //     .then(response=>{
-  //         console.log(response.data);
-  //     })
-  //     .catch(error=>{
-  //         console.log(error);
-  //     })
-  // }
-
+  
   return (
     <div className="contenedor-form">
       <div className="formulario">
@@ -51,8 +26,7 @@ const FormReserva = () => {
               type="text"
               name="nombre"
               id="nombre"
-              value={form.nombre}
-              onChange={handleChange}
+              placeholder={userName}
               disabled
             />
           </div>
@@ -63,8 +37,7 @@ const FormReserva = () => {
               type="text"
               name="apellido"
               id="Apellido"
-              value={form.apellido}
-              onChange={handleChange}
+              placeholder={userLastName}
               disabled
             />
           </div>
@@ -76,9 +49,8 @@ const FormReserva = () => {
               type="email"
               name="email"
               id="email"
-              value={form.email}
-              onChange={handleChange}
               disabled
+              placeholder={userEmail}
             />
           </div>
 
@@ -89,11 +61,42 @@ const FormReserva = () => {
               name="ciudad"
               id="ciudad"
               placeholder="Ciudad"
-              value={form.ciudad}
-              onChange={handleChange}
               required
             />
           </div>
+          
+          <div
+						className="input-vacuna"
+					>
+
+						<p>
+							¿Se encuentra vacunado contra el COVID-19?
+						</p>
+						<input
+							className="form-radio"
+							value= "vacunaSi"
+							type="radio"
+							name="vacuna"
+							id="vacunaSi"
+							onChange={(e)=>setVacuna(e.target.value)}
+						/>
+						<label htmlFor="vaccineYes" >
+							Sí
+						</label>
+						<input
+							value="vacunaNo"
+							type="radio"
+							name="vacuna"
+							id="vacunaNo"
+							onChange={(e)=>setVacuna(e.target.value)}
+						/>
+						<label htmlFor="vaccineNo" >
+							No
+						</label>
+
+           
+					</div>
+         
         </form>
       </div>
     </div>

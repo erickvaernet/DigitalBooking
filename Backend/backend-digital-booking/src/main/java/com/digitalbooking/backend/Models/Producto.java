@@ -43,7 +43,7 @@ public class Producto {
         inverseJoinColumns = @JoinColumn(name = "id_caracteristica")
     )
     private Set<Caracteristica> caracteristicas;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
             name="productos_x_politicas",
             joinColumns = @JoinColumn(name="id_producto"),

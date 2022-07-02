@@ -5,7 +5,7 @@ import Star from "./Star";
 const createArray = (length) => Array.from({ length });
 
 export default function StarRating({ totalStars = 5 }) {
-  const [selectedStars, setSelectedStars] = useState(0);
+  const [selectedStars, setSelectedStars] = useState(4);
   return (
     <>
       <div>

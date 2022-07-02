@@ -137,7 +137,9 @@ a {
   border-radius: 0px 0px 8px 8px;
 }
 
-
+.img-list img:hover {
+ opacity: 0.8;
+}
 .card-list {
   padding: 0px 15px 15px 15px;
 }

@@ -5,13 +5,13 @@ import BuscadorTitulo from "../BuscadorTitulo/BuscadorTitulo";
 
 import "./bloque-buscador.css";
 
-function BloqueDeBusqueda() {
+function BloqueDeBusqueda({handleChangeCiudadIdYFecha}) {
   return (
     <div className="container-total-busqueda">
       <BuscadorTitulo />
       <div className="container delimiter">
         <div className="subContainer delimiterChild">
-          <SearchForm />
+          <SearchForm handleChangeCiudadIdYFecha={handleChangeCiudadIdYFecha} />
         </div>
       </div>
     </div>

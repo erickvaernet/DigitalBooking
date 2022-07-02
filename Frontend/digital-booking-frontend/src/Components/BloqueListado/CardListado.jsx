@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,45 +8,31 @@ import StarRating from "../Estrellas/StarRating";
 import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 
 import "./bloque-listado.css";
-import { GetProducto, Paginacion } from "../../service/productoService";
-import UseCounter from "../../hook/useCounter";
+
 
 import CardCategoria from "../BloqueCategorias/CardCategoria";
-import GetCategoria from "../../service/categoriaService";
 import TitulosPrincipales from "../TitulosPrincipales/TitulosPrincipales";
 
-const CardListado = () => {
-  const [producto, setProducto] = useState([]);
-  const [card, setCard] = useState([]);
-  const { page, decremento, incremento } = UseCounter();
-
-  useEffect(() => {
-    GetProducto(setProducto);
-  }, []);
-  useEffect(() => {
-    Paginacion(page, setProducto);
-  }, [page]);
-
-  useEffect(() => {
-    GetCategoria(setCard);
-  }, []);
+const CardListado = ({producto, setcategoriaId, card, page, incremento, decremento}) => {
   return (
     <div>
       <TitulosPrincipales titulo="Buscar por tipo de alojamiento" clase="uno" />
       <div className="contenedor-categoria">
         {card.map((data) => (
           <CardCategoria
+            key={data.id}
             id={data.id}
             urlImagen={data.urlImagen}
             titulo={data.titulo}
-            setData={setProducto}
+            descripcion={data.descripcion}
+            setcategoriaId={setcategoriaId}
           />
         ))}
       </div>
       <TitulosPrincipales titulo="Recomendaciones" clase="dos" />
       <div className="contenedor-bloque-listado">
         {producto.map((data) => (
-          <div className="contenedor-card-list">
+          <div key={data.id} className="contenedor-card-list">
             <div className="img-list">
               <img src={data.imagenes[0].url} alt={data.titulo} />
             </div>

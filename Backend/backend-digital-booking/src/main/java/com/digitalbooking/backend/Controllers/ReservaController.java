@@ -53,13 +53,18 @@ public class ReservaController {
             @RequestParam(value = "producto_id", required = false)Integer productoId,
             @RequestParam(value = "pagina", required = false)Integer page,
             @RequestParam(value = "tamanio", required = false)Integer size,
+            @RequestParam(value = "usuario_id", required = false)Integer usuarioId,
             HttpServletRequest request
     ){
-        PaginaDTO<?> paginaReservas = productoId!=null?
-               reservaService.findByProductoId(productoId, page, size)
-            :  reservaService.findAll(page, size);
+        PaginaDTO<?> paginaReservas;
+        if(productoId!=null)
+            paginaReservas= reservaService.findByProductoId(productoId, page, size);
+        else if(usuarioId!=null)
+            paginaReservas = reservaService.findByUsuarioId(usuarioId, page, size);
+        else
+            paginaReservas = reservaService.findAll(page, size);
         paginaReservas.setUrlBase(request.getRequestURL().toString());
-        return new ResponseEntity<PaginaDTO<?>>(paginaReservas, HttpStatus.OK);
+        return new ResponseEntity<>(paginaReservas, HttpStatus.OK);
     }
 
 }

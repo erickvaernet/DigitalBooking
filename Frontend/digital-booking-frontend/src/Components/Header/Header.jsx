@@ -9,7 +9,7 @@ import "./header.css";
 
 const Header = () => {
   const { user } = useContext(userContext);
-
+  
   return (
     <header>
       <div className="contenedor-logo">

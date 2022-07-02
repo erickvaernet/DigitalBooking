@@ -20,6 +20,7 @@ class PoliticaServiceTest {
     @Autowired
     public IPoliticaService politicaService;
 
+    /*
     @Test
     void create() {
         PoliticaDTO politicaDTO= new PoliticaDTO("politica1");
@@ -89,5 +90,5 @@ class PoliticaServiceTest {
         assertTrue(pagina.getResultados().size() > 0);
     }
     
-
+*/
 }

@@ -98,9 +98,12 @@ margin-bottom: 16px;
     line-height: 28px;
     text-align: center;
     color: var(--color-principal);
-    padding-top: 32px;
+    padding-top: 16px;
     padding-bottom: 115px;
 }
+.login-contenedor header{
+    margin-bottom: 50px;
+  }
 .formulario-login .error{
     color: #FF0000;
     text-align: right;
@@ -151,10 +154,12 @@ color: var(--color-dos);
         padding-right: 200px;
     }
     .formulario-login>h2 {
-        padding: 180px 0px 55px 0px;
+        padding: 30px 0px 20px 0px;
       }
   
-    
+      .login-contenedor header{
+        margin-bottom: 50px;
+      }
   }
   /* Modelo adaptativo destokp */
   @media screen and (min-width: 992px) {
@@ -170,7 +175,7 @@ color: var(--color-dos);
     }
     /**HASTA AQUI */
     .formulario-login>h2 {
-        padding: 128px 0px 20px 0px;
+        padding: 30px 0px 20px 0px;
       }
       .formulario-login form button{
         width: 45%;
@@ -182,4 +187,5 @@ color: var(--color-dos);
       .formulario-login form label{
           text-align: left;
       }
+   
 }

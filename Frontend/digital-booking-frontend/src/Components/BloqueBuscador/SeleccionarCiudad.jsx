@@ -6,8 +6,11 @@ import OpcionCiudad from "./OpcionCiudad";
 import localizador from "./img/localizador.png";
 
 import "./bloque-buscador.css";
+import { useState } from "react";
+import { useEffect } from "react";
+import GetCiudad from "../../service/ciudadService";
 
-function SelectCity() {
+function SelectCity({handleChangeCiudadId}) {
   const customStyles = {
     option: () => ({
       textAlign: "left",
@@ -79,34 +82,27 @@ function SelectCity() {
     }),
 
     placeholder: () => ({
-      color: "#31363F",
-      fontSize: "12pt",
+      color: "#7F7F7F",
+      fontSize: "14px",
       fontWeight: 500,
       width: "100%",
+      lineHeight: "16px",
     }),
     singleValue: () => ({
       display: "flex",
     }),
   };
-
-  const options = [
-    {
-      value: "buenos-aires, Argentina",
-      label: <OpcionCiudad ciudad="Buenos Aires" pais="Argentina" />,
-    },
-    {
-      value: "mendoza, Argentina",
-      label: <OpcionCiudad ciudad="Mendoza" pais="Argentina" />,
-    },
-    {
-      value: "cordoba, Argentina",
-      label: <OpcionCiudad ciudad="Córdoba" pais="Argentina" />,
-    },
-    {
-      value: "bariloche, Argentina",
-      label: <OpcionCiudad ciudad="San Carlos de Bariloche" pais="Argentina" />,
-    },
-  ];
+   
+  const [card, setCard] = useState([]);
+  useEffect(() => {
+     GetCiudad(setCard)
+  }, []);
+  const options = card.map(data =>{
+    return {
+      value: `${data.id}`,
+      label: <OpcionCiudad ciudad={data.nombre} pais='Argentina' />
+    }
+  })
 
   return (
     <Select
@@ -116,6 +112,8 @@ function SelectCity() {
       isSearchable
       isClearable
       getOptionValue={(option) => `${option.value}:`}
+      onChange={handleChangeCiudadId}
+      
     />
   );
 }

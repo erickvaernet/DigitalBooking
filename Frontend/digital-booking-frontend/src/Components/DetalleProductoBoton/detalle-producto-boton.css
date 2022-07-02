@@ -22,7 +22,7 @@
   background-color: var(--color-tres);
 }
 .swal2-title {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 23px;
   color: var(--color-principal);
 }
@@ -32,8 +32,9 @@
 
   color: var(--color-dos);
 }
-.swal2-styled.swal2-confirm {
-  width: 206px;
+.swal2-icon.swal2-success {
+  border-color: var(--color-principal);
+  color: var(--color-principal);
 }
 
 /* Modelo adaptativo destokp */

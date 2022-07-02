@@ -3,9 +3,9 @@ import { FiltroCategoria } from "../../service/productoService";
 
 import "./bloque-categorias.css";
 
-const CardCategoria = ({ id, urlImagen, titulo, descripcion, setData }) => {
+const CardCategoria = ({ id, urlImagen, titulo, descripcion, setcategoriaId }) => {
    const handleClick = () =>{
-    FiltroCategoria(id,setData)
+     setcategoriaId(id)
    }
   return (
     <div className="card-categoria" onClick={handleClick}>

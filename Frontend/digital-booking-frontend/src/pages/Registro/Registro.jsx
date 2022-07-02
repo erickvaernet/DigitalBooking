@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import Swal from "sweetalert2";
 
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
+
+import { Registrar } from "../../service/registroService";
 
 import "./registro.css";
 
@@ -93,19 +94,8 @@ const Registro = () => {
       event.preventDefault();
       setError(["El usuario ya existe."]);
     } else {
-      Swal.fire({
-        position: "Center",
-        imageUrl:
-          "https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800,h_600/https://codigofuente.io/wp-content/uploads/2018/09/progress.gif",
-        imageHeight: 150,
-        imageAlt: "Cargando",
-        showConfirmButton: false,
-        timer: 1500,
-      });
       event.preventDefault();
-      navigate("/login", {
-        replace: true,
-      });
+      Registrar(name,surname,email,password,navigate,setError);            
     }
   };
 

@@ -1,19 +1,25 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import Swal from "sweetalert2";
 
-import Credenciales from "../../Components/Credenciales/Credenciales";
+
+
 import { userContext } from "../../context/UserContext";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
+import LoginError from "../../Components/LoginError/LoginError";
+import { GetJWT } from "../../service/loginService";
 
 import "./login.css";
+import useQuery from "../../hook/useQuery";
 
 const Login = () => {
   const { user, setUser } = useContext(userContext);
-  console.log(user);
+  const userName = localStorage.getItem("userName");
+  console.log(userName);
+  const [showError, setShowError] = useState(false);
+
   const [email, setEmail] = useState("");
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -25,30 +31,35 @@ const Login = () => {
   };
 
   const [errores, setErrores] = useState([]);
-  const navigate = useNavigate();
+  const navigat = useNavigate();
+  const query = useQuery();
 
-  const validarCredenciales = (e) => {
-    e.preventDefault();
-    if (email !== Credenciales.email || password !== Credenciales.password) {
-      setErrores([
-        "Las credenciales son inválidas. Por favor intentalo nuevamente. ",
-      ]);
+
+  useEffect(() => {
+    if (user) navigate();
+  }, []);
+
+
+  function navigate() {
+    const id = query.get("error");
+    if (id) {
+      navigat(`/producto/${query.get("error")}/reserva`);
     } else {
-      Swal.fire({
-        position: "Center",
-        imageUrl:
-          "https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800,h_600/https://codigofuente.io/wp-content/uploads/2018/09/progress.gif",
-        imageHeight: 150,
-        imageWidth: 150,
-        imageAlt: "Cargando",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      setUser(true);
-      navigate("/", {
-        replace: true,
-      });
+      navigat(`/`);
     }
+  }
+  useEffect(() => {
+    if (query.get("error"))
+      setShowError("Para realizar una reserva necesitas estar logueado");
+  }, [query]);
+
+
+  const [usuario, setUsuario] = useState({});
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    GetJWT(email, password, navigat, setUser, setErrores, setUsuario);
   };
 
   const [isShowPassword, setIsShowPassword] = useState(false);
@@ -56,8 +67,9 @@ const Login = () => {
     <div className="login-contenedor">
       <Header />
       <div className="formulario-login">
+        {showError && <LoginError>{showError}</LoginError>}
         <h2>Iniciar sesión</h2>
-        <form onSubmit={validarCredenciales}>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="email">Correo electrónico</label>
           <input
             type="email"

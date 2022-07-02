@@ -42,6 +42,19 @@ input::-webkit-input-placeholder {
   border: none;
 }
 
+.input-vacuna{
+  font-size: 1rem;
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  gap:8px;
+  
+}
+
+form input[type="radio"]{float:left; width: 20px; margin-right: 10px;}
+.input-vacuna label{float: left; width: 100px;}
+
+
 /* Modelo adaptativo tablet */
 @media screen and (min-width: 768px) {
   .formulario form {
@@ -55,6 +68,7 @@ input::-webkit-input-placeholder {
   .contenedor-form h3 {
     font-size: 1.5rem;
   }
+
 }
 
 /* Modelo adaptativo destokp */
@@ -73,4 +87,9 @@ input::-webkit-input-placeholder {
     width: 50%;
     padding: 0.625rem;
   }
+
+  .input-vacuna{
+    font-size: 1rem;
+  }
 }
+

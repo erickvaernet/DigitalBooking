@@ -13,20 +13,23 @@ const BloqueHeader = () => {
 
   const [product, setProduct] = useState(
     []);
+  const [categoria, setcategoria] = useState(
+    []);
 
   useEffect(() => {
-    GetProductById(id, setProduct);
+    GetProductById(id, setProduct, setcategoria);
   }, [id]);
 
   const handleClick = () => {
     navigate(-1)
   }
+  
   return (
     <div className="cont-BloqueHeader">
       <div className="contenedor-info">
      
       <div className="InfoHeader">
-      <p>Hoteles</p>
+      <p>{categoria.titulo}</p>
       <h3>{product.titulo}</h3> 
     </div>
        

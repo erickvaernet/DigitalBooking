@@ -6,21 +6,16 @@ import { userContext } from "../../context/UserContext";
 import "./detalle-producto-boton.css";
 
 const DetalleProductoBoton = () => {
-  const { user } = useContext(userContext);
+  const { estado, setEstado } = useContext(userContext);
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
-      user?.reserva?.fechaFinal.length === 10 &&
-      user?.reserva?.fechaInicial.length === 10
+     estado?.reserva?.fechaFinal.length === 10 &&
+      estado?.reserva?.fechaInicial.length === 10
     ) {
       Swal.fire({
         position: "Center",
-        imageUrl:
-          "https://icones.pro/wp-content/uploads/2021/02/icone-de-tique-ronde-orange.png",
-        imageHeight: 100,
-        imageWidth: 100,
-        imageAlt: "Reserva exitosa",
         title: "¡Muchas gracias!",
         text: "Su reserva se ha realizado con éxito!",
       });
@@ -28,7 +23,7 @@ const DetalleProductoBoton = () => {
         navigate("/");
       }, 4000);
     } else {
-      Swal.fire("", "Debes seleccionar checkIn checkOut", "error");
+      Swal.fire("", "Debes seleccionar checkIn checkOut Hora", "error");
     }
   };
 

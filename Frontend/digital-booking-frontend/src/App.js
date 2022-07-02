@@ -6,12 +6,15 @@ import { userContext } from "./context/UserContext";
 
 function App() {
   const [user, setUser] = useState(false)
+  const [estado, setEstado] = useState(false)
 
   return (
     <div className="App">
     <userContext.Provider value={{
       user,
-      setUser
+      setUser,
+      estado,
+      setEstado
     }}>
      <AdminRoutes/>
     </userContext.Provider>

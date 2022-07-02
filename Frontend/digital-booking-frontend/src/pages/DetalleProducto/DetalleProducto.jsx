@@ -14,8 +14,20 @@ import BloqueImagenes from "../../Components/BloqueImagenes/BloqueImagenes";
 import SliderTablet from "../../Components/SliderTablet/SliderTablet";
 
 import "./detalleProducto.css";
+import { GetProductById } from "../../service/productoService";
+import { useParams } from "react-router-dom";
 
 const DetalleProducto = () => {
+  const { id } = useParams();
+
+  const [product, setProduct] = useState([]);
+  const [imagenes, setImagenes] = useState([]);
+  const [categoria, setcategoria] = useState([]);
+  const [ciudades, setCiudades] = useState([]);
+
+  useEffect(() => {
+    GetProductById(id, setProduct, setcategoria, setImagenes, setCiudades);
+  }, [id]);
   return (
     <div className="detalle__producto">
       <Header />
@@ -28,7 +40,7 @@ const DetalleProducto = () => {
       <BloqueImagenes />
       <SliderTablet />
       <h2 className="detalle__producto--titulo alojate">
-        Alójate en el corazón de Buenos Aires
+        Alójate en el corazón de {ciudades.nombre}
       </h2>
       <BloqueDescripcion />
       <h2 className="detalle__producto--titulo">¿Que ofrece este lugar?</h2>

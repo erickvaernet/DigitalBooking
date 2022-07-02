@@ -70,7 +70,7 @@ public class ReservaService implements IReservaService {
                 .map(this::mapDTO)
                 .collect(Collectors.toList());
         long numeroReservas = pagina.getTotalElements();
-        return new PaginaDTO<ReservaDTO>(page,size,numeroReservas,reservasDTO);
+        return new PaginaDTO<>(page, size, numeroReservas, reservasDTO);
     }
 
 
@@ -85,8 +85,23 @@ public class ReservaService implements IReservaService {
                 .map(this::mapDTOList)
                 .collect(Collectors.toList());
         long numeroReservas = pagina.getTotalElements();
-        return new PaginaDTO<ReservaDTOList>(page,size,numeroReservas,reservasDTO);
+        return new PaginaDTO<>(page, size, numeroReservas, reservasDTO);
     }
+
+    @Override
+    public PaginaDTO<ReservaDTOList> findByUsuarioId(Integer usuarioId, Integer page, Integer size) {
+        page=page==null?0:page;
+        size=size==null?8:size;
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<Reserva> pagina = reservaRepository.findByUsuarioId(usuarioId,pageable);
+        List<ReservaDTOList> reservasDTO = pagina.getContent().stream()
+                .map(this::mapDTOList)
+                .collect(Collectors.toList());
+        long numeroReservas = pagina.getTotalElements();
+        return new PaginaDTO<>(page, size, numeroReservas, reservasDTO);
+    }
+
 
     private ReservaDTO mapDTO(Reserva reserva){
             return mapper.convertValue(reserva, ReservaDTO.class);

@@ -24,6 +24,7 @@ const Logout = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Vuelve Pronto!", "", "success");
+        localStorage.clear()
         setUser(false);
         navigate("/login", {
           replace: true,

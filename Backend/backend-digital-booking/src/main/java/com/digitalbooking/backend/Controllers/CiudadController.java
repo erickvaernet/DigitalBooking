@@ -26,7 +26,7 @@ public class CiudadController  {
         return new ResponseEntity<>(ciudadbuscada, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<CiudadDTO> create(@RequestBody CiudadDTO ciudaddto){
         CiudadDTO respuestaCiudad = ciudadService.create(ciudaddto);

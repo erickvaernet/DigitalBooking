@@ -15,23 +15,48 @@ function GetProducto(setProducto) {
     });
 }
 
-function GetProductById(id, setProduct) {
+function GetProductById(
+  id,
+  setProduct,
+  setCategoria = null,
+  setImagenes = null,
+  setCiudades= null
+) {
   axios;
   instanceApi
     .get(`/productos/${id}`)
     .then(({ data: response }) => {
       const dat = response;
       setProduct(dat);
+      if (setCategoria != null) setCategoria(dat.categoria);
+      if (setImagenes != null) setImagenes(dat.imagenes[0]);
+      if (setCiudades != null) setCiudades(dat.ciudad);
     })
     .catch((error) => {
       throw new Error(`the products could not be returned correctly: ${error}`);
     });
 }
 
-function Paginacion(page, setProducto) {
+function Paginacion(page, setProducto, ciudadIdYFecha=null, categoria_id=null) {
+  let uri=`/productos/?pagina=${page}`
+  if(ciudadIdYFecha!=null){
+    let ciudad_id= ciudadIdYFecha.ciudadId
+    let fecha1= ciudadIdYFecha.fecha1
+    let fecha2= ciudadIdYFecha.fecha2
+    ciudad_id!=null? 
+      uri+=`&&ciudad_id=${ciudad_id}`:""
+    fecha1!=null && fecha2!=null ?
+       uri+=`&&fecha_inicio=${ciudadIdYFecha.fecha1}`+`&&fecha_fin=${ciudadIdYFecha.fecha2}`:""
+    
+  }
+  if(categoria_id!=null){
+    uri+=`&&categoria_id=${categoria_id}`
+  }
+    
+
   axios;
   instanceApi
-    .get(`/productos/?pagina=${page}`)
+    .get(uri)
     .then(({ data: response }) => {
       const { resultados } = response;
       setProducto(resultados);
@@ -54,4 +79,26 @@ function FiltroCategoria(id, setCard) {
     });
 }
 
-export { GetProducto, GetProductById, Paginacion, FiltroCategoria };
+function PostProducto(nuevoProducto) {
+  let token=localStorage.getItem("token")
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
+
+  const bodyParameters = nuevoProducto;
+  console.log(token)
+  console.log(nuevoProducto)
+  axios;
+  instanceApi
+    .post("/productos",bodyParameters,config
+     )
+    .then(({ data: response }) => {
+      const { resultados } = response;
+    })
+    .catch((error) => {
+      throw new Error(`the products could not be returned correctly: ${error}`);
+    });
+}
+
+
+export { GetProducto, GetProductById, Paginacion, FiltroCategoria, PostProducto };

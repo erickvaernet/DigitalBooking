@@ -13,3 +13,12 @@ body{
   --color-tres:#191B1D;
   --color-cuatro:#DFE4EA;
 }
+
+div.css-6j8wv5-Input {
+  
+  opacity: 0;
+}
+
+.home .rmdp-input {
+  box-shadow: none;
+}

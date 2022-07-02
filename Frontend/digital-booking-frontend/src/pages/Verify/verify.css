@@ -1,0 +1,79 @@
+.verify .registro {
+    display: none
+}
+.verify .login {
+    color: #fff;
+}
+
+
+.verify .container {
+    background-color: var(--color-principal);
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 0px 0 25px 0;
+    align-items: center;
+}
+
+.verify .container h3 {
+    color: #fff;
+    margin-bottom: 35px;
+    padding: 0px 0px 0px 0px;
+    font-size: 30px;
+}
+
+
+.verify .botones {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    height: 50px;
+    color: #fff;
+}
+.verify .botones button {
+    background-color: var(--color-principal);
+}
+.verify .botones button:hover {
+    background: var(--color-dos);
+    color: var(--color-cuatro);
+    border: 0px solid transparent;
+    border: 1px solid var(--color-principal);
+  }
+
+@media screen and (max-width: 768px) {
+     .verify .botones button {
+        width: 150px;
+        border: 1px solid var(--color-dos);
+        padding: 20px;
+        font-size: 16px;
+        height: 70px
+    }
+    .verify .botones button:hover {
+        background: var(--color-dos);
+        color: var(--color-cuatro);
+        border: 0px solid transparent;
+        border: 1px solid var(--color-principal);
+      }
+
+    .verify .container h3 {
+        font-size: 30px;
+    }
+  }
+  @media screen and (max-width: 390px) {
+    
+    .verify .botones button {
+        width: 150px;
+        border: 1px solid var(--color-dos);
+        padding: 15px
+    }
+    .verify .botones button:hover {
+        background: var(--color-dos);
+        color: var(--color-cuatro);
+        border: 0px solid transparent;
+        border: 1px solid var(--color-principal);
+      }
+
+    .verify .container h3 {
+        font-size: 20px;
+    }
+  }

@@ -17,19 +17,23 @@ const checkOut = "Check out";
 
 const DetalleReserva = () => {
   const { id } = useParams();
-  const { user, setUser } = useContext(userContext);
+  const { estado, setEstado } = useContext(userContext);
 
   const [product, setProduct] = useState([]);
+  const [imagenes, setImagenes] = useState([]);
+  const [categoria, setcategoria] = useState([]);
+  const [ciudades, setCiudades] = useState([]);
 
+ 
   useEffect(() => {
-    GetProductById(id, setProduct);
+    GetProductById(id, setProduct, setcategoria, setImagenes, setCiudades);
   }, [id]);
   return (
     <div className="detalle">
       <div className="detalle_contenedro--uno">
         <h2 className="detalle__titulo">Detalle de la reserva</h2>
         <img
-          src="https://cdn.pixabay.com/photo/2014/10/16/08/39/bedroom-490779__340.jpg"
+          src={imagenes.url}
           alt="fondo"
         />
       </div>
@@ -43,19 +47,19 @@ const DetalleReserva = () => {
           <div className="detalle_ubicacion">
             <FontAwesomeIcon icon={faLocationDot} />
             <p>
-              Av. Colón 1643, Buenos Aires, Ciudad Autónoma de Buenos Aires,
+              Av. Colón 1111, {ciudades.nombre}, Ciudad Autónoma de {ciudades.nombre},
               Argentina
             </p>
           </div>
           <hr />
           <DetalleReservaCheck
             check={checkIn}
-            fecha={user?.reserva?.fechaInicial}
+            fecha={estado?.reserva?.fechaInicial}
           />
           <hr />
           <DetalleReservaCheck
             check={checkOut}
-            fecha={user?.reserva?.fechaFinal}
+            fecha={estado?.reserva?.fechaFinal}
           />
           <hr />
           <DetalleProductoBoton />
