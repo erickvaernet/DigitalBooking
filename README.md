@@ -11,6 +11,7 @@ El objetivo que perseguimos como equipo es la buena comunicación, fomentando la
 ## Equipo
 
 **ERICK ADRIEL VAERNET**
+
 Soy Licenciado en Biología y Técnico Universitario en Programación. 
 Hasta el año 2020 me dedicaba a la investigación en la Universidad Nacional del Nordeste. En ese año descubrí mi pasión por el desarrollo y la programación web, y opté por dejar la investigación seguir lo que realmente me apasiona, de esta manera comencé mis estudios autodidactas, y a la par comencé a estudiar la carrera de técnico  universitario en programación.
 A mitad de la carrera de técnico se me dio la oportunidad de comenzar la carrera Certified Tech Developer. Estudié ambas carreras a la par hasta el día de hoy que pude completar la Tecnicatura Universitaria en Programación y estar finalizando la primera parte de Certified Tech Developer, la cual me dio la mayoría de los conocimientos necesarios para desempeñarme en esta área.
