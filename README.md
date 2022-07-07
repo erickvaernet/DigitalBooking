@@ -10,6 +10,59 @@ El objetivo que perseguimos como equipo es la buena comunicación, fomentando la
 
 ## Equipo
 
+**ERICK ADRIEL VAERNET**
+Soy Licenciado en Biología y Técnico Universitario en Programación. 
+Hasta el año 2020 me dedicaba a la investigación en la Universidad Nacional del Nordeste. En ese año descubrí mi pasión por el desarrollo y la programación web, y opté por dejar la investigación seguir lo que realmente me apasiona, de esta manera comencé mis estudios autodidactas, y a la par comencé a estudiar la carrera de técnico  universitario en programación.
+A mitad de la carrera de técnico se me dio la oportunidad de comenzar la carrera Certified Tech Developer. Estudié ambas carreras a la par hasta el día de hoy que pude completar la Tecnicatura Universitaria en Programación y estar finalizando la primera parte de Certified Tech Developer, la cual me dio la mayoría de los conocimientos necesarios para desempeñarme en esta área.
+En los diferentes sprint me desempeñe realizando diferentes tareas en el área de Backend, Base de Datos, FrontEnd, y en menor medida en Testing (realizando test unitarios para el backend).
+
+| Tecnología | Fortaleza |
+|------------|-----------|
+Front end | :large_blue_circle: :large_blue_circle: :large_blue_circle:
+Back end | :large_blue_circle: :large_blue_circle: :large_blue_circle:
+Infraestructura | :large_blue_circle:
+Testing /QA | :large_blue_circle: :large_blue_circle:
+Base de Datos | :large_blue_circle: :large_blue_circle: :large_blue_circle:
+
+**LUIS FELIPE ERIRA**
+
+Soy técnico en salud ocupacional, tecnólogo en administración de sistemas informáticos y estudiante activo de último semestre de ingeniería de sistemas. Anteriormente me desempeñaba en el área de salud ocupacional en un hospital.
+En el año 2018 quise darle un giro a mi carrera, principalmente por que me apasiona la tecnología y al ver la velocidad con la que está cambiando el mundo, la tecnología y los nuevos desarrollos, vi una excelente oportunidad para prepararme y de esta manera obtener estos nuevos conocimientos.
+El primer paso fue terminar la tecnología en administración de sistemas informáticos y luego me postule a una beca con la alcaldía de Medellín de desarrollo FrontEnd, gracias a todo lo aprendido en el camino me enamore aun mas y por esta razón me postule a la carrera Certified Tech Developer, la cual es una excelente oportunidad para aprender y adquirir todos los conocimientos necesarios para desempeñarme en esta área, en los diferentes sprint me desempeñe en el área de FrontEnd realizando diferentes tareas y aplicando lo aprendido.
+
+| Tecnología | Fortaleza |
+|------------|-----------|
+Front end | :large_blue_circle: :large_blue_circle: :large_blue_circle: 
+Back end | :large_blue_circle: :large_blue_circle:
+Infraestructura | :large_blue_circle:
+Testing /QA | :large_blue_circle: :large_blue_circle: 
+Base de Datos | :large_blue_circle: :large_blue_circle: :large_blue_circle: 
+
+**AGUSTINA LEONELA**
+
+Agustina Leonela
+Soy licenciada en Biología Molecular, dedicada a la docencia y a la investigación científica. Actualmente me encuentro culminando el trabajo final de la Maestría en Educación en Entornos Digitales. Mi incursión en la programación se dió en el año 2020 con una beca de formación BackEnd para mujeres, con el fin de aplicar lo aprendido en mi entorno de trabajo. Sin embargo, mi curiosidad me llevó más allá y quise seguir aprendiendo, razón por la que me postulé para las becas de Certified Tech Developer, centrando mi interés principalmente en la programación BackEnd y en base de datos, las cuales describo como mis fortalezas. 
+Durante el desarrollo de este proyecto, estuve abocada principalmente a las tareas de testing, tanto de Back y de Front. Dichas tareas fueron tales como la revisión de historias de usuario, creación de casos de prueba tanto para BackEnd como FrontEnd, realización de tests funcionales y no funcionales, Smoke Tests y Regression Tests. Automatización de pruebas de Front con Jest, procurando un coverage superior al 40%. Creación de peticiones y sets de pruebas para testeos de APIs con Postman. 
+
+
+| Tecnología | Fortaleza |
+|------------|-----------|
+Front end | :large_blue_circle: :large_blue_circle:  
+Back end | :large_blue_circle: :large_blue_circle:
+Infraestructura | :large_blue_circle:
+Testing /QA | :large_blue_circle: :large_blue_circle: :large_blue_circle:
+Base de Datos | :large_blue_circle: :large_blue_circle: :large_blue_circle: 
+
+**GREGO MARTINEZ**
+
+| Tecnología | Fortaleza |
+|------------|-----------|
+Front end | :large_blue_circle: :large_blue_circle:  
+Back end | :large_blue_circle: :large_blue_circle: :large_blue_circle:
+Infraestructura | :large_blue_circle: :large_blue_circle: :large_blue_circle:
+Testing /QA | :large_blue_circle: 
+Base de Datos | :large_blue_circle: :large_blue_circle: :large_blue_circle: 
+
 **JESSICA ORTIZ OSPINA**
 
 Soy formada en ingeniería en Finanzas carrera la cual me formo con alto sentido analítico, con experiencia en trabajo en equipo, actualmente me encuentro haciendo la carrera Certified Tech Developer. El campo de la programación siempre me llamo la atención, porque todo lo que puedes imaginar lo puedes crear a partir de la programación, trayendo soluciones a los diversas necesidades de las personas. Con muchas ganas de seguir aprendiendo y poder así aportar innovadoras soluciones a las necesidades de las personas.
@@ -31,21 +84,6 @@ Infraestructura | :large_blue_circle:
 Testing /QA | :large_blue_circle: 
 Base de Datos | :large_blue_circle: :large_blue_circle:
 
-**ERICK ADRIEL VAERNET**
-Soy Licenciado en Biología y Técnico Universitario en Programación. 
-Hasta el año 2020 me dedicaba a la investigación en la Universidad Nacional del Nordeste. En ese año descubrí mi pasión por el desarrollo y la programación web, y opté por dejar la investigación seguir lo que realmente me apasiona, de esta manera comencé mis estudios autodidactas, y a la par comencé a estudiar la carrera de técnico  universitario en programación.
-A mitad de la carrera de técnico se me dio la oportunidad de comenzar la carrera Certified Tech Developer. Estudié ambas carreras a la par hasta el día de hoy que pude completar la Tecnicatura Universitaria en Programación y estar finalizando la primera parte de Certified Tech Developer, la cual me dio la mayoría de los conocimientos necesarios para desempeñarme en esta área.
-En los diferentes sprint me desempeñe realizando diferentes tareas en el área de Backend, Base de Datos, FrontEnd, y en menor medida en Testing (realizando test unitarios para el backend).
-
-| Tecnología | Fortaleza |
-|------------|-----------|
-Front end | :large_blue_circle: :large_blue_circle: :large_blue_circle:
-Back end | :large_blue_circle: :large_blue_circle: :large_blue_circle:
-Infraestructura | :large_blue_circle:
-Testing /QA | :large_blue_circle: :large_blue_circle:
-Base de Datos | :large_blue_circle: :large_blue_circle: :large_blue_circle:
-
-
 **CELE SALCEDO**
 
 Soy comunicadora Social e hice una especialización en Comunicación Institucional, lo que me permitió trabajar varios años en medios de comunicación como radio y televisión. Dentro del área de programación, comencé la carrera de Certified Tech Developer si tener ningún conocimiento previo. Esto realmente significó un mundo nuevo para mí, me ayudó a ver y analizar las cosas de una forma muy distinta a la que estaba acostumbrada. Me encantó el desafío, me queda muchísimo por aprender y conocer.
@@ -58,47 +96,6 @@ Back end | :large_blue_circle: :large_blue_circle:
 Infraestructura | :large_blue_circle:
 Testing /QA | :large_blue_circle: :large_blue_circle: :large_blue_circle:
 Base de Datos | :large_blue_circle: 
-
-
-**LUIS FELIPE ERIRA**
-
-Soy técnico en salud ocupacional, tecnólogo en administración de sistemas informáticos y estudiante activo de último semestre de ingeniería de sistemas. Anteriormente me desempeñaba en el área de salud ocupacional en un hospital.
-En el año 2018 quise darle un giro a mi carrera, principalmente por que me apasiona la tecnología y al ver la velocidad con la que está cambiando el mundo, la tecnología y los nuevos desarrollos, vi una excelente oportunidad para prepararme y de esta manera obtener estos nuevos conocimientos.
-El primer paso fue terminar la tecnología en administración de sistemas informáticos y luego me postule a una beca con la alcaldía de Medellín de desarrollo FrontEnd, gracias a todo lo aprendido en el camino me enamore aun mas y por esta razón me postule a la carrera Certified Tech Developer, la cual es una excelente oportunidad para aprender y adquirir todos los conocimientos necesarios para desempeñarme en esta área, en los diferentes sprint me desempeñe en el área de FrontEnd realizando diferentes tareas y aplicando lo aprendido.
-
-| Tecnología | Fortaleza |
-|------------|-----------|
-Front end | :large_blue_circle: :large_blue_circle: :large_blue_circle: 
-Back end | :large_blue_circle: :large_blue_circle:
-Infraestructura | :large_blue_circle:
-Testing /QA | :large_blue_circle: :large_blue_circle: 
-Base de Datos | :large_blue_circle: :large_blue_circle: :large_blue_circle: 
-
-**AGUSTINA LEONELA**
-Agustina Leonela
-Soy licenciada en Biología Molecular, dedicada a la docencia y a la investigación científica. Actualmente me encuentro culminando el trabajo final de la Maestría en Educación en Entornos Digitales. Mi incursión en la programación se dió en el año 2020 con una beca de formación BackEnd para mujeres, con el fin de aplicar lo aprendido en mi entorno de trabajo. Sin embargo, mi curiosidad me llevó más allá y quise seguir aprendiendo, razón por la que me postulé para las becas de Certified Tech Developer, centrando mi interés principalmente en la programación BackEnd y en base de datos, las cuales describo como mis fortalezas. 
-Durante el desarrollo de este proyecto, estuve abocada principalmente a las tareas de testing, tanto de Back y de Front. Dichas tareas fueron tales como la revisión de historias de usuario, creación de casos de prueba tanto para BackEnd como FrontEnd, realización de tests funcionales y no funcionales, Smoke Tests y Regression Tests. Automatización de pruebas de Front con Jest, procurando un coverage superior al 40%. Creación de peticiones y sets de pruebas para testeos de APIs con Postman. 
-
-
-| Tecnología | Fortaleza |
-|------------|-----------|
-Front end | :large_blue_circle: :large_blue_circle:  
-Back end | :large_blue_circle: :large_blue_circle:
-Infraestructura | :large_blue_circle:
-Testing /QA | :large_blue_circle: :large_blue_circle: :large_blue_circle:
-Base de Datos | :large_blue_circle: :large_blue_circle: :large_blue_circle: 
-
-**GREGO MARTINEZ**
-
-
-
-| Tecnología | Fortaleza |
-|------------|-----------|
-Front end | :large_blue_circle: :large_blue_circle:  
-Back end | :large_blue_circle: :large_blue_circle: :large_blue_circle:
-Infraestructura | :large_blue_circle: :large_blue_circle: :large_blue_circle:
-Testing /QA | :large_blue_circle: 
-Base de Datos | :large_blue_circle: :large_blue_circle: :large_blue_circle: 
 
 ### Metodología de trabajo
 
