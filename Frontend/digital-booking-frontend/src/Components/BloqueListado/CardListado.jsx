@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,6 +14,8 @@ import CardCategoria from "../BloqueCategorias/CardCategoria";
 import TitulosPrincipales from "../TitulosPrincipales/TitulosPrincipales";
 
 const CardListado = ({producto, setcategoriaId, card, page, incremento, decremento}) => {
+  const [selectedStars, setSelectedStars] = useState(4);
+
   return (
     <div>
       <TitulosPrincipales titulo="Buscar por tipo de alojamiento" clase="uno" />
@@ -33,19 +35,24 @@ const CardListado = ({producto, setcategoriaId, card, page, incremento, decremen
       <div className="contenedor-bloque-listado">
         {producto.map((data) => (
           <div key={data.id} className="contenedor-card-list">
-            <div className="img-list">
-              <img src={data.imagenes[0].url} alt={data.titulo} />
+            <div className="img-list"
+              style={{
+            backgroundImage: `url(${data.imagenes[0].url})`,
+          }}
+          alt={data.titulo}
+            >
             </div>
             <div className="card-list">
               <div className="estrella">
                 <div className="hotel-estrellas">
                   <h3>{data.categoria.titulo}</h3>
                   <div className="rating">
-                    <StarRating />
+                    <StarRating selectedStars={selectedStars} setSelectedStars={4} />
                   </div>
                 </div>
                 <div className="calificacion">
                   <h3>{data.titulo}</h3>
+                  {/* {selectedStars >= 4 ? <p>Muy bueno</p> : selectedStars >=2 ? <p>Regular</p>  : <p>Malo</p> }  */}
                   <p>Muy bueno</p>
                 </div>
               </div>
@@ -57,9 +64,9 @@ const CardListado = ({producto, setcategoriaId, card, page, incremento, decremen
                
               </div>
               <div>
-              <IconosListado />
+              <IconosListado caracteristicas={data.caracteristicas}/>
                 <p className="descripcion-listado">
-                  {data.descripcion} <span>...más</span>
+                  {data.descripcion.slice(0,135)} <span>...más</span>
                 </p>
               </div>
               <Link to={`/producto/${data.id}`}>

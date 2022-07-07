@@ -1,7 +1,7 @@
 
 stages:
   - build
-#  - deploy
+  - deploy
 
 build_job:
   stage: build
@@ -15,12 +15,12 @@ build_job:
     paths:
       - Frontend/digital-booking-frontend/build
 
-#deploy_job:
-#  stage: deploy
-#  image: python:latest
-#  script: 
-#    - pip install awscli
-#    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-#    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-#    - aws configure set region $AWS_DEFAULT_REGION
-#    - aws s3 sync Frontend/digital-booking-frontend/build s3://$AWS_S3_FRONT --acl public-read
+deploy_job:
+  stage: deploy
+  image: python:latest
+  script: 
+    - pip install awscli
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws configure set region $AWS_DEFAULT_REGION
+    - aws s3 sync Frontend/digital-booking-frontend/build s3://$AWS_S3_FRONT --acl public-read

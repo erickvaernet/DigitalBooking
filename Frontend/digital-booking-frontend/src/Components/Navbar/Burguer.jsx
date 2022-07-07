@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,6 +9,7 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { AiOutlineClose } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 import { userContext } from "../../context/UserContext";
 import Avatar from "../Avatar/Avatar";
@@ -18,7 +19,7 @@ import "./burguer.css";
 const ImagenBurger = "/assets/menu.png";
 
 function Burguer() {
-  const { user } = useContext(userContext);
+  const { user, setUser } = useContext(userContext);
 
   const [mostrar, setmostrar] = useState(false);
   const [hidden, setHidden] = useState(true);
@@ -26,7 +27,31 @@ function Burguer() {
     hidden ? setHidden(false) : setHidden(true);
     setmostrar(!mostrar);
   };
+  const navigate = useNavigate();
 
+const sesion = () => {
+     Swal.fire({
+      title: "Cerrar sesión?",
+      imageWidth: 100,
+      imageHeight: 100,
+      imageAlt: "Custom image",
+      showCancelButton: true,
+      confirmButtonColor: "#ff7059",
+      cancelButtonColor: "var(--color-dos)",
+      confirmButtonText: "Confirmar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Vuelve Pronto!", "", "success");
+        localStorage.clear()
+        setUser(false);
+        navigate("/login", {
+          replace: true,
+        });
+      }
+    });
+
+}
   return (
     <div className="contenedor-burger">
       <div className="icono" onClick={handleMostrar}>
@@ -64,7 +89,7 @@ function Burguer() {
             {user === true && (
               <Link to="/login">
                 {" "}
-                <button>
+                <button onClick={sesion}>
                   ¿Deseas <small>cerrar sesión?</small>{" "}
                 </button>
               </Link>

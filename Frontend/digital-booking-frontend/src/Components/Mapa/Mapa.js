@@ -33,7 +33,7 @@ class Mapa extends Component {
 
     let map = new window.google.maps.Map(document.getElementById("map"), {
       zoom: 14,
-      center: { lat: -34.5828, lng: -58.42405 },
+      center: { lat: -34.5920470627147, lng: -58.391167433160675 },
       mapTypeId: "satellite",
     });
     this.setState({

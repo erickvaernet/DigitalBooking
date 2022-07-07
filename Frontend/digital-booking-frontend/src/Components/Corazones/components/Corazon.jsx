@@ -12,7 +12,7 @@ const Corazon = (props) => {
     <div className="corazon-container" onClick={onClick}>
       <img
         height="40px"
-        src={props.roto ? corazonAzul : corazonFull}
+        src={props.roto ? corazonFull : corazonAzul}
         alt={"corazon " + props.roto ? "No me gusta" : "Me gusta"}
       />
     </div>

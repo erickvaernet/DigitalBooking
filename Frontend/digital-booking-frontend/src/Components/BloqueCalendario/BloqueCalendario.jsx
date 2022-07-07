@@ -28,13 +28,15 @@ export default function BloqueCalendario() {
   let arrow = (direction, handleClick) => (
     <Flecha direction={direction} click={handleClick} />
   );
+    //estado para setear el tamanio
   const [width, setWidth] = useState(window.innerWidth);
+    //logica para manejar el cambio de tamanio de la pantalla responsive //
   const handleResize = () => setWidth(window.innerWidth);
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
+  // Función que a partir de dos fechas me genera un array con los días del mismo
   const getDaysArray = function (s, e) {
     for (var a = [], d = s; d.toDays() <= e.toDays(); d.add(1, "days")) {
       a.push(d.toDays());
@@ -42,15 +44,16 @@ export default function BloqueCalendario() {
     return a;
   };
   let reservadas = [{fechaInicial:estado?.reserva?.fechaInicial},{fechaFinal: estado?.reserva?.fechaFinal}];
+    // Obtiene un array con el rango de dias pro cada reserva
   const rangos = reservadas.map((reservada) => {
     return getDaysArray(
       new DateObject(reservada.fechaInicial),
       new DateObject(reservada.fechaFinal)
     );
   });
+  // Obtiene un array con todos los días que está reservado el hotelo (sin duplicado)
 
   let dias = rangos;
-  console.log(dias);
   if (rangos.length !== 0) {
     dias = rangos.reduce((a, b) => {
       return [...new Set([...a, ...b])];
@@ -76,7 +79,6 @@ export default function BloqueCalendario() {
         if (result < 0) props.disabled = true;
 
         const isReserved = dias.includes(date.toDays());
-        console.log(dias.includes(date.toDays()));
         if (isReserved) {
           props.disabled = true;
         }

@@ -20,7 +20,7 @@ export const Verify = () => {
     return (
         <div className="verify">
             <Header/>
-        <div class="container text-center">
+        <div class="container__fallido text-center">
             {verify ? <VerifySuccess/> : <VerifyFail/>}
         </div>
         <Boton link="/home" titulo="Volver al Inicio" clase="botones" />

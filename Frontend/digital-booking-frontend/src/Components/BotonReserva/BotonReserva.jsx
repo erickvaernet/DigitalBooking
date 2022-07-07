@@ -5,7 +5,7 @@ import { GetProductById } from "../../service/productoService";
 
 export default function BotonReserva( ) {
   const navigate = useNavigate()
-  const { user } = useContext(userContext);
+  const user  = localStorage.getItem("userName");
   const [producto, setProducto] = useState([]);
   const { id } = useParams();
 
@@ -15,10 +15,10 @@ export default function BotonReserva( ) {
 
   function RedireccionReserva() {
   
-    if (user === true ) {
-      navigate(`/producto/${producto.id}/reserva`);
-    }
-    else navigate("/login?error=" + producto.id);
+    user?
+      navigate(`/producto/${producto.id}/reserva`)
+    :
+     navigate("/login?error=" + producto.id);
   }
 
   return (

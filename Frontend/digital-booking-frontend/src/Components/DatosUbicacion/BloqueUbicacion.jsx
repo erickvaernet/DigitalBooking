@@ -9,17 +9,9 @@ import "./bloque-ubicacion.css";
 import { useParams } from "react-router-dom";
 import { GetProductById } from "../../service/productoService";
 
-const BloqueUbicacion = () => {
-  const { id } = useParams();
+const BloqueUbicacion = ({ciudad}) => {
+  const [selectedStars, setSelectedStars] = useState(4);
 
-  const [product, setProduct] = useState([]);
-  const [categoria, setcategoria] = useState([]);
-  const [ciudades, setCiudades] = useState([]);
-  const [imagenes, setImagenes] = useState([]);
-
-  useEffect(() => {
-    GetProductById(id, setProduct, setcategoria, setImagenes, setCiudades);
-  }, [id]);
   return (
     <div className="cont-ubicacion">
       <div className="cont-localizacion">
@@ -27,16 +19,16 @@ const BloqueUbicacion = () => {
         <div className="localizacion">
           <p>
             {" "}
-            {ciudades.nombre}, Ciudad Autónoma de {ciudades.nombre}, Argentina
+            {ciudad.nombre}, Ciudad Autónoma de {ciudad.nombre}, Argentina
           </p>
           <p> A 940 m del centro</p>
         </div>
       </div>
 
       <div className="cont-calificacion">
-        <p>Muy bueno</p>
+      {selectedStars >= 4 ? <p>Muy bueno</p> : selectedStars >=2 ? <p>Regular</p>  : <p>Malo</p> } 
         <div className="rating-ubicacion">
-          <StarRating />
+          <StarRating selectedStars={selectedStars} setSelectedStars={setSelectedStars} />
         </div>
       </div>
     </div>

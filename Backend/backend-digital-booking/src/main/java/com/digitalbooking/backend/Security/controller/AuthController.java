@@ -1,5 +1,8 @@
 package com.digitalbooking.backend.Security.controller;
 
+import com.digitalbooking.backend.Dto.FavoritosDTO;
+import com.digitalbooking.backend.Dto.PaginaDTO;
+import com.digitalbooking.backend.Dto.ProductoDTO;
 import com.digitalbooking.backend.Security.dto.JwtDTO;
 import com.digitalbooking.backend.Security.dto.LoginUsuarioDTO;
 import com.digitalbooking.backend.Security.dto.NuevoUsuarioDTO;
@@ -28,14 +31,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
 @RequestMapping("/auth")
 @CrossOrigin
 public class AuthController {
-
-
     @Autowired
     AuthenticationManager authenticationManager;
     @Autowired
@@ -93,5 +95,41 @@ public class AuthController {
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Verificación fallida");
         }
+    }
+
+    @GetMapping("/find")
+    public Optional<Usuario> findByNombreUsuario(@Param("nombreUsuario") String nombreUsuario) {
+        return usuarioService.findByNombreUsuario(nombreUsuario);
+    }
+    @PostMapping("/favoritos")
+    public ResponseEntity<?> agregarFavorito(@RequestBody FavoritosDTO favoritosDTO){
+        usuarioService.agregarFavorito(favoritosDTO);
+        return ResponseEntity.ok("Favorito agregado");
+    }
+    @DeleteMapping("/favoritos")
+    public ResponseEntity<?> eliminarFavorito(@RequestParam(value = "usuario_id", required = true)Integer usuarioId,
+                                              @RequestParam(value = "producto_id", required = true)Integer productoId){
+        Integer resultado = usuarioService.deleteFavorito(usuarioId,productoId);
+        return new ResponseEntity<>(resultado,HttpStatus.OK);
+    }
+    @GetMapping("/favoritos/{id}")
+    public ResponseEntity<PaginaDTO<ProductoDTO>> findAll(
+            @RequestParam(value = "pagina", required = false)Integer page,
+            @RequestParam(value = "tamanio", required = false)Integer size,
+            HttpServletRequest request, @PathVariable("id") Integer id)
+    {
+        PaginaDTO<ProductoDTO> paginaProductos;
+        paginaProductos = usuarioService.findAllfavoritos(page, size, id);
+
+        String url= request.getRequestURL().toString();
+        paginaProductos.setUrlBase(url);
+
+        return new ResponseEntity<>(paginaProductos, HttpStatus.OK);
+    }
+    @GetMapping("/favorito")
+    public ResponseEntity<?> findFavorito( @RequestParam(value = "usuario_id", required = true)Integer usuarioId,
+                                           @RequestParam(value = "producto_id", required = true)Integer productoId){
+        Integer resultado = usuarioService.findFavorito(usuarioId, productoId);
+        return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
 }

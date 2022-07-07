@@ -8,6 +8,7 @@ import DetalleProducto from "../pages/DetalleProducto/DetalleProducto";
 import Reserva from "../pages/Reserva/Reserva";
 import MisReservas from "../Components/MisReservas/MisReservas";
 import CreacionProducto from "../pages/CreacionProducto/CreacionProducto";
+import Favoritos from "../pages/Favoritos/Favoritos";
 import { Verify } from "../pages/Verify/Verify";
 
 const AdminRoutes = () => {
@@ -23,14 +24,10 @@ const AdminRoutes = () => {
           <Route path="/producto/:id" element={<DetalleProducto />} />
           <Route path="/producto/:id/reserva" element={<Reserva />} /> 
           <Route path="/reservas" element={<MisReservas />} /> 
-                
-                
           <Route path="/administracion/crear-producto" element={<CreacionProducto />} /> 
           <Route path="/producto/:id/reserva" element={<Reserva />} />
           <Route path="/verify" element={<Verify />} />
-            
-
-
+          <Route path="/favoritos" element={<Favoritos />} />
         </Routes>
       </BrowserRouter>
     </div>

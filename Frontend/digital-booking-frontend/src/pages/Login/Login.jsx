@@ -17,7 +17,6 @@ import useQuery from "../../hook/useQuery";
 const Login = () => {
   const { user, setUser } = useContext(userContext);
   const userName = localStorage.getItem("userName");
-  console.log(userName);
   const [showError, setShowError] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -54,12 +53,11 @@ const Login = () => {
   }, [query]);
 
 
-  const [usuario, setUsuario] = useState({});
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    GetJWT(email, password, navigat, setUser, setErrores, setUsuario);
+    GetJWT(email, password, setUser, setErrores);
+    navigat("/");
   };
 
   const [isShowPassword, setIsShowPassword] = useState(false);

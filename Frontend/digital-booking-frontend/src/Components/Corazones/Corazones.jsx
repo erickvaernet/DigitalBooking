@@ -1,15 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Corazon } from "./components/Corazon";
 import { corazones } from "../../data/data";
+import { useParams } from "react-router-dom";
+import {MostrarFavorito, borrarFavorito, agregarFavorito} from "../../service/favoritosService"
 
 import "./corazon.css";
 
 export default function Corazones() {
   const [corazonesLista, setCorazonesLista] = useState(corazones);
+  const [bandera, setBandera] = useState(false);
+  const {id} = useParams();
 
-  const handleClickCorazon = (id) => {
+  useEffect(() => {
+    MostrarFavorito(localStorage.getItem("id"),id, setBandera);
+  }, [])
+
+  const handleClickCorazon = (idCorazon) => {
     let nuevaListaDeCorazones = corazonesLista.map((corazon) => {
-      if (corazon.id === id) {
+      if (corazon.id === idCorazon) {
+        setBandera(!bandera);
+        console.log(bandera);
+        if (bandera) {
+          borrarFavorito(localStorage.getItem("id"),id)
+        } else {
+          agregarFavorito(id)
+        }
         return {
           id: corazon.id,
           roto: !corazon.roto,
@@ -27,7 +42,7 @@ export default function Corazones() {
           <Corazon
             key={corazon.id}
             id={corazon.id}
-            roto={corazon.roto}
+            roto={bandera}
             onClick={handleClickCorazon}
           />
         ))}

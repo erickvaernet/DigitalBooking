@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState} from "react";
 
 import { DateObject } from "react-multi-date-picker";
 
@@ -13,17 +13,21 @@ import Flecha from "../../Components/FlechaCalendario/FlechaCalendario";
 import DetalleReserva from "../../Components/DetalleReserva/DetalleReserva";
 import BloquePoliticas from "../../Components/BloquePoliticas/BloquePoliticas";
 import DetalleReservaSelect from "../../Components/DetalleReservaSelect/DetalleReservaSelect";
-
+import { GetProductById2 } from "../../service/productoService";
+import { useParams } from "react-router-dom";
 import "./reserva.css";
-import BotonesHeader from "../../Components/BotonesHeader/BotonesHeader";
-import Avatar from "../../Components/Avatar/Avatar.js";
-import Logo from "../../Components/Logo/Logo";
-import Burguer from "../../Components/Navbar/Burguer";
-import Boton from "../../Components/Boton/Boton";
 
 const Reserva = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const { estado, setEstado } = useContext(userContext);
+  const { id } = useParams();
+
+  const [product, setProduct] = useState();
+
+  useEffect(() => {
+    GetProductById2(id).then((p)=>setProduct(p))
+  }, [id]);
+
 
   function handleChange(e) {
     switch (e.length) {
@@ -72,6 +76,8 @@ const Reserva = () => {
     return a;
   };
   const listadereservas = [{fechaInicial:estado?.reserva?.fechaInicial},{fechaFinal: estado?.reserva?.fechaFinal}];
+
+    // Obtiene un array con el rango de dias pro cada reserva
   const rangos = listadereservas.map((reservada) => {
     return getDaysArray(
       new DateObject(reservada.fechaInicial),
@@ -85,6 +91,7 @@ const Reserva = () => {
       return [...new Set([...a, ...b])];
     });
   }
+  //propiedades del calendario propias de la reserva
 
   let filtro = new DateObject().subtract(0, "days");
   let arrow = (direction, handleClick) => (
@@ -103,6 +110,7 @@ const Reserva = () => {
       className: "reserva",
       minDate: new DateObject().subtract(60, "days"),
       maxDate: new DateObject().add(364, "days"),
+       /*
       mapDays: ({ date, today }) => {
         let props = {};
         let result = date.toDays() - today.toDays();
@@ -113,7 +121,8 @@ const Reserva = () => {
           props.disabled = true;
         }
         return props;
-      },
+      }*/
+      
     };
     calReserva = <Calendario {...PropiedadesCal} />;
   } else {
@@ -128,6 +137,7 @@ const Reserva = () => {
       className: "reserva",
       minDate: new DateObject().subtract(60, "days"),
       maxDate: new DateObject().add(364, "days"),
+       /*
       mapDays: ({ date, today }) => {
         let props = {};
         let result = date.toDays() - today.toDays();
@@ -138,14 +148,17 @@ const Reserva = () => {
           props.disabled = true;
         }
         return props;
-      },
+      }*/
+      
     };
     calReserva = <Calendario {...PropiedadesCal} />;
   }
 
   return (
+    product?(
     <div className="pantalla__reserva">
      <Header/>
+    
      <BloqueHeader/>
       <h3 className="reserva__titulo">Completá tus datos</h3>
       <div className="pantalla__reserva--contenedor">
@@ -167,11 +180,11 @@ const Reserva = () => {
       <div className="reserva__politicas">
         <h3>Què tenès que saber</h3>
         <hr />
-        <BloquePoliticas />
+      <BloquePoliticas politicas={product.politicas}/>
       </div>
 
       <Footer />
-    </div>
+    </div>):<div></div>
   );
 };
 

@@ -1,8 +1,6 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 
 import "./form-reserva.css";
-
-
 
 const FormReserva = () => {
   const handleSubmit = (e) => {
@@ -12,10 +10,9 @@ const FormReserva = () => {
   const userName = localStorage.getItem("userName");
   const userLastName = localStorage.getItem("userLastName");
   const userEmail = localStorage.getItem("userEmail");
- 
-  const[vacuna, setVacuna]= useState("");
 
-  
+  const [vacuna, setVacuna] = useState("");
+
   return (
     <div className="contenedor-form">
       <div className="formulario">
@@ -64,39 +61,6 @@ const FormReserva = () => {
               required
             />
           </div>
-          
-          <div
-						className="input-vacuna"
-					>
-
-						<p>
-							¿Se encuentra vacunado contra el COVID-19?
-						</p>
-						<input
-							className="form-radio"
-							value= "vacunaSi"
-							type="radio"
-							name="vacuna"
-							id="vacunaSi"
-							onChange={(e)=>setVacuna(e.target.value)}
-						/>
-						<label htmlFor="vaccineYes" >
-							Sí
-						</label>
-						<input
-							value="vacunaNo"
-							type="radio"
-							name="vacuna"
-							id="vacunaNo"
-							onChange={(e)=>setVacuna(e.target.value)}
-						/>
-						<label htmlFor="vaccineNo" >
-							No
-						</label>
-
-           
-					</div>
-         
         </form>
       </div>
     </div>

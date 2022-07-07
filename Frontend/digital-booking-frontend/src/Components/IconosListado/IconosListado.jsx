@@ -5,11 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./Iconos-listado.css";
 
-const IconosListado = () => {
+const IconosListado = ({caracteristicas}) => {
   return (
     <div className="iconos-listado">
-      <FontAwesomeIcon icon={faWifi} />
-      <FontAwesomeIcon icon={faPersonSwimming} />
+      {caracteristicas.map(({id,titulo,urlImagen},index)=>{        
+        return(
+        <div key={index} style={{backgroundImage: `url(${urlImagen})`}} className="icono-listado-consumido" >.</div>
+        )
+      })}
     </div>
   );
 };

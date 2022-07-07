@@ -1,5 +1,6 @@
 package com.digitalbooking.backend.Security.entity;
 
+import com.digitalbooking.backend.Models.Producto;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,8 +35,16 @@ public class Usuario {
     private String verificationCode;
     @Column(name = "enabled", nullable = false)
     private boolean enabled;
+    @ManyToMany
+    @JoinTable(name = "favoritos",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "producto_id"))
+    private Set<Producto> productos=new HashSet<>();
 
     public Usuario() {
+    }
+    public Usuario(Integer id) {
+        this.id=id;
     }
 
     public Usuario(String nombre, String apellido, String nombreUsuario, String email, String password, String verificationCode, boolean enabled) {

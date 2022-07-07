@@ -32,7 +32,6 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 23px;
-    text-align: right;
    
  }
   .contenedorBlanco {
@@ -96,9 +95,7 @@
   color: #ffffff;
 }
 
-nav{
-  padding-right: 1rem;
-}
+
 
 .contenedorNaranja .boton__logout{
   display: none;

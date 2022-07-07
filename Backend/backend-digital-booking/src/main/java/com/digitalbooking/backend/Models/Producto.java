@@ -23,7 +23,7 @@ public class Producto {
     private Integer id;
     @Column(nullable = false)
     private String titulo;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition="Text")
     private String descripcion;
     @Column(nullable = false)
     private boolean disponible;

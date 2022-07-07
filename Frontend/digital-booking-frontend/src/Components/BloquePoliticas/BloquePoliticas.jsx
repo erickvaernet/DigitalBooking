@@ -1,36 +1,25 @@
 import React from "react";
 import "./bloque-politicas.css";
 
-const BloquePoliticas = () => {
+const BloquePoliticas = ({politicas}) => {
+
+  const capitalize= (word)=> {
+    return word[0].toUpperCase() + word.slice(1).toLowerCase();
+  }
+
+
   return (
     <section className="bloque_politicas">
-        <div className="reglas-container">
-          <h3>Normas de la casa</h3>
-          <p>Check-out 10:00</p>
-          <p>No se permiten fiestas</p>
-          <p>No fumar</p>
+      {politicas.map(({id,titulo,descripcion})=>{
+        let title= capitalize(titulo.tituloPolitica.replaceAll("_"," ").toLowerCase())
+        return(
+        <div key={id} className="politicaIdividual-container">
+          <h3>{title}</h3>
+          {descripcion.split(".")
+          .map((e,i)=><p key={i}>{e}</p>)}
         </div>
-      <div className="seguridad-container">
-            <h3>Salud y seguridad</h3>
-            <p>
-              Se aplican las pautas de distanciamiento social y otras normas
-              relacionadas con el coronavirus
-            </p>
-            <p>Detector de humo</p>
-            <p>Depósito de seguridad</p>
-          </div>
-
-          
-
-      
-
-          <div className="cancelacion-container">
-            <h3>Política de cancelación</h3>
-            <p>
-              Agregá la fecha de tu viaje para obtener los detalles de la
-              cancelación de esta estadía.
-            </p>
-          </div>
+        )
+      })}
 
     </section>
   );

@@ -8,6 +8,7 @@ import com.digitalbooking.backend.Exceptions.EntityNotFoundException;
 import com.digitalbooking.backend.Exceptions.InvalidIdException;
 import com.digitalbooking.backend.Models.Reserva;
 import com.digitalbooking.backend.Repository.IReservasRepository;
+import com.digitalbooking.backend.Security.entity.Usuario;
 import com.digitalbooking.backend.Services.IReservaService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class ReservaService implements IReservaService {
     @Override
     public ReservaDTO create(ReservaDTO reservaDTO) {
         Reserva reserva = mapEntity(reservaDTO);
+        reserva.setUsuario(new Usuario(reservaDTO.getUsuario().getId()));
         Reserva newReserva = reservaRepository.save(reserva);
         return mapDTO(newReserva);
     }
@@ -89,14 +91,14 @@ public class ReservaService implements IReservaService {
     }
 
     @Override
-    public PaginaDTO<ReservaDTOList> findByUsuarioId(Integer usuarioId, Integer page, Integer size) {
+    public PaginaDTO<ReservaDTO> findByUsuarioId(Integer usuarioId, Integer page, Integer size) {
         page=page==null?0:page;
         size=size==null?8:size;
         Pageable pageable = PageRequest.of(page, size);
 
         Page<Reserva> pagina = reservaRepository.findByUsuarioId(usuarioId,pageable);
-        List<ReservaDTOList> reservasDTO = pagina.getContent().stream()
-                .map(this::mapDTOList)
+        List<ReservaDTO> reservasDTO = pagina.getContent().stream()
+                .map(this::mapDTO)
                 .collect(Collectors.toList());
         long numeroReservas = pagina.getTotalElements();
         return new PaginaDTO<>(page, size, numeroReservas, reservasDTO);

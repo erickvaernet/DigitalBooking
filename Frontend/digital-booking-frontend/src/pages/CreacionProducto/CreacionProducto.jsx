@@ -70,8 +70,9 @@ const CreacionProducto = () => {
     [1]
   );
   const handleChangeCaracteristicas = (position) => {
+    const indexPosition=position
     const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
+      index === (indexPosition) ? !item : item
     );
     setCheckedState(updatedCheckedState);
     
@@ -175,7 +176,7 @@ const CreacionProducto = () => {
     navigate(-1)
   }
 
-  //jessi
+
   const confirmCrear = () => {
     Swal.fire({
       title: "¿Está seguro que desea guardar el producto?",
@@ -189,11 +190,12 @@ const CreacionProducto = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Tu propiedad se ha creado con éxito!", "", "success");
+        navigate('/')
       }
     });
   };
 
-  //jessi
+  
 
 
   return (
@@ -323,7 +325,7 @@ const CreacionProducto = () => {
                             id={index}
                             value={id}
                             onChange={() => handleChangeCaracteristicas(index)}
-                            checked={checkedState[id]}
+                            checked={checkedState[index]}
                           />
                           <label htmlFor={`custom-checkbox-${id}`}>
                             {titulo}
@@ -340,7 +342,7 @@ const CreacionProducto = () => {
               </h4>
               <div className="creacionProducto__contenedor_politicas">
                 <div>
-                  <h5 className="creacionProducto__subtitulo">
+                  <h5 className="creacionProducto__subtitulo_inde">
                     Normas de la casa
                   </h5>
                   <div className="input-box2">
@@ -357,7 +359,7 @@ const CreacionProducto = () => {
                   </div>
                 </div>
                 <div>
-                  <h5 className="creacionProducto__subtitulo">
+                  <h5 className="creacionProducto__subtitulo_inde">
                     Salud y seguridad
                   </h5>
                   <div className="input-box2">
@@ -374,7 +376,7 @@ const CreacionProducto = () => {
                   </div>
                 </div>
                 <div>
-                  <h5 className="creacionProducto__subtitulo">
+                  <h5 className="creacionProducto__subtitulo_inde">
                     Políticas de cancelación
                   </h5>
                   <div className="input-box2">

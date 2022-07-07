@@ -36,6 +36,47 @@
   position: relative;
 }
 
+.detalleProducto__caracteristica__img {
+  width: 25px;
+  height: 25px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: none;
+  filter: hue-rotate(200deg);
+}
+.detalleProducto__contenedor__caracteristicas {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style-type: none;
+  padding: 0.625rem;
+}
+
+.detalleProducto__contenedor__caracteristicaIndividual {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.625rem;
+  align-items: center;
+  font-family: "Roboto";
+  color: var(--color-dos);
+}
+
+
+.input-checkbox {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto";
+}
+
 /* Modelo adaptativo tablet */
 @media screen and (min-width: 768px) {
   .contenedor-bloque {

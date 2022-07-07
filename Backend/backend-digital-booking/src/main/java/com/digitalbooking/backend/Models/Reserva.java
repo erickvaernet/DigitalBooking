@@ -1,6 +1,7 @@
 package com.digitalbooking.backend.Models;
 
 import com.digitalbooking.backend.Security.entity.Usuario;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
@@ -21,10 +22,11 @@ public class Reserva {
     private Date fechaInicial;
     @Column(nullable = false)
     private Date fechaFinal;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="producto_id",nullable = false)
     private Producto producto;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name="usuario_id",nullable = false)
     private Usuario usuario;
 

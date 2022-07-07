@@ -13,17 +13,23 @@
 }
 
 .creacionProducto__subtitulo {
-  font-family: "Roboto";
-  font-style: normal;
   font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 1.75rem;
+  font-size: 20px;
+  line-height: 23px;
   color: var(--color-dos);
-  font-weight: 700;
   padding-left: 0.625rem;
-  padding-top: 2.375rem;
+  padding-top: 2.3125rem;
+  padding-bottom: 0.8125rem;
 }
-
+.creacionProducto__subtitulo_inde {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 23px;
+  color: var(--color-dos);
+  padding-left: 0.625rem;
+  padding-top: 2.3125rem;
+  padding-bottom: 0.8125rem;
+}
 .pantalla__creacionProducto--contenedor {
   background-color: #e5e5e5;
   padding-left: 0.625rem;
@@ -133,6 +139,12 @@ input::-webkit-input-placeholder {
 .box-direccion {
   border: none;
 }
+.input-box label{
+line-height: 30px;
+font-weight: 500;
+font-size: 14px;
+color: var(--color-dos);
+}
 .input-box2 label {
   color: var(--color-dos);
   font-weight: 500;
@@ -142,7 +154,7 @@ input::-webkit-input-placeholder {
   background: #bebebe31;
   margin: 0 0.625rem 0 0.625rem;
   border-radius: 0.3125rem;
-  padding: 0.625rem 1.25rem 0.625rem 1.25rem;
+  padding: 1.0625rem 1.25rem 0.9375rem 1.25rem;
 }
 
 .creacionProducto__contenedor__contraste .botonAgregar {
@@ -239,21 +251,34 @@ input.box-elemento-imagen {
     background: none !important;
     box-shadow: none !important;
   }
-
+  #categoria , #ciudad{
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+    color: #BEBEBE;
+    height: 2.5rem;
+  }
   .img-checkbox {
-    width: 3.125rem;
-    height: 1.875rem;
+    width: 30px;
+    height: 25px;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     border: none;
     background-color: none;
+    filter: hue-rotate(200deg);
   }
 
   .creacionProducto__contenedor_politicas {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    background: #ffffff;
+    padding: 0px 30px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    margin: 0rem 0.625rem 0rem 0.625rem;
+
   }
 
   .creacionProducto__form .formPrincipal {

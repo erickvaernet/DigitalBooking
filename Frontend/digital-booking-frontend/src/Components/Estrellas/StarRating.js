@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Star from "./Star";
 
 const createArray = (length) => Array.from({ length });
 
-export default function StarRating({ totalStars = 5 }) {
-  const [selectedStars, setSelectedStars] = useState(4);
+export default function StarRating({ totalStars = 5,selectedStars, setSelectedStars }) {
   return (
     <>
       <div>

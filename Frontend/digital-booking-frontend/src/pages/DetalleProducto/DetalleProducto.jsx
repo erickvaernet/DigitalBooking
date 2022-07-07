@@ -14,38 +14,36 @@ import BloqueImagenes from "../../Components/BloqueImagenes/BloqueImagenes";
 import SliderTablet from "../../Components/SliderTablet/SliderTablet";
 
 import "./detalleProducto.css";
-import { GetProductById } from "../../service/productoService";
+import { GetProductById, GetProductById2 } from "../../service/productoService";
 import { useParams } from "react-router-dom";
 
 const DetalleProducto = () => {
   const { id } = useParams();
 
-  const [product, setProduct] = useState([]);
-  const [imagenes, setImagenes] = useState([]);
-  const [categoria, setcategoria] = useState([]);
-  const [ciudades, setCiudades] = useState([]);
-
+  const [product, setProduct] = useState();
+ 
   useEffect(() => {
-    GetProductById(id, setProduct, setcategoria, setImagenes, setCiudades);
+    GetProductById2(id).then((p)=>setProduct(p))
   }, [id]);
   return (
+    product?(
     <div className="detalle__producto">
       <Header />
 
       <BloqueHeader />
-      <BloqueUbicacion />
+      <BloqueUbicacion ciudad={product.ciudad}/>
       <div className="compartir">
         <IconosCompartir />
       </div>
-      <BloqueImagenes />
+      <BloqueImagenes imagenes={product.imagenes}/>
       <SliderTablet />
       <h2 className="detalle__producto--titulo alojate">
-        Alójate en el corazón de {ciudades.nombre}
+        Alójate en el corazón de {product.nombre}
       </h2>
-      <BloqueDescripcion />
+      <BloqueDescripcion descripcion={product.descripcion}/>
       <h2 className="detalle__producto--titulo">¿Que ofrece este lugar?</h2>
       <hr />
-      <CaracteristicasProducto />
+      <CaracteristicasProducto  caracteristicas={product.caracteristicas} />
       <h2 className="detalle__producto--titulo fechas">Fechas disponibles</h2>
       <BloqueCalendario />
       <h2 className="detalle__producto--titulo">¿Donde vas a estar?</h2>
@@ -54,10 +52,11 @@ const DetalleProducto = () => {
       <MapaGeneral />
       <h2 className="detalle__producto--titulo">Qué tenés que saber</h2>
       <hr />
-      <BloquePoliticas />
+      <BloquePoliticas politicas={product.politicas} />
       <small className="temporal"></small>
       <Footer />
-    </div>
+    </div>)
+    :<div></div>
   );
 };
 

@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-expressions */
 import axios from "axios";
 import instanceApi from "./instanceApi";
-import jwt_decode from "jwt-decode";
 
-function GetJWT(usuario, contrasena, navigat, setUser, setErrores, setUsuario) {
+function GetJWT(usuario, contrasena, setUser, setErrores) {
  
   axios;
   instanceApi
@@ -13,15 +12,17 @@ function GetJWT(usuario, contrasena, navigat, setUser, setErrores, setUsuario) {
     })
     .then(({ data: response }) => {
       const dat = response;
-      setUsuario(dat);
       localStorage.setItem("userName", dat.nombre);
       localStorage.setItem("userEmail", dat.email);
       localStorage.setItem("userLastName", dat.apellido);
       localStorage.setItem("token", dat.token);
-      localStorage.setItem("roles", jwt_decode(dat.token).rol);
-      localStorage.setItem("id", jwt_decode(dat.token).id);
+      localStorage.setItem("id", dat.id);
+      let rolAdminOBJ=dat.authorities.filter((e)=>e.authority==="ROLE_ADMIN")
+      let rolAdminBool=false
+      rolAdminBool= rolAdminOBJ[0]?.authority==="ROLE_ADMIN"? true:false
+      localStorage.setItem("rolAdmin",rolAdminBool);
+      
       setUser(true);
-      navigat("/");
     })
     .catch((error) => {
       setErrores([

@@ -37,6 +37,20 @@ function GetProductById(
     });
 }
 
+function GetProductById2(id) {
+  axios;
+  return instanceApi
+    .get(`/productos/${id}`)
+    .then(({ data: response }) => {
+      const dat = response;
+      return dat
+    })
+    .catch((error) => {
+      throw new Error(`the products could not be returned correctly: ${error}`);
+    });
+}
+
+
 function Paginacion(page, setProducto, ciudadIdYFecha=null, categoria_id=null) {
   let uri=`/productos/?pagina=${page}`
   if(ciudadIdYFecha!=null){
@@ -52,7 +66,6 @@ function Paginacion(page, setProducto, ciudadIdYFecha=null, categoria_id=null) {
   if(categoria_id!=null){
     uri+=`&&categoria_id=${categoria_id}`
   }
-    
 
   axios;
   instanceApi
@@ -86,8 +99,6 @@ function PostProducto(nuevoProducto) {
   };
 
   const bodyParameters = nuevoProducto;
-  console.log(token)
-  console.log(nuevoProducto)
   axios;
   instanceApi
     .post("/productos",bodyParameters,config
@@ -101,4 +112,17 @@ function PostProducto(nuevoProducto) {
 }
 
 
-export { GetProducto, GetProductById, Paginacion, FiltroCategoria, PostProducto };
+function cantidadProductosPorCategoria(categoria_id) {
+  let uri=`/productos/?categoria_id=${categoria_id}`
+  axios;
+  return instanceApi
+    .get(uri)
+    .then(({ data: response }) => {
+      return response
+    })
+    .catch((error) => {
+      throw new Error(`the products could not be returned correctly: ${error}`);
+    });
+}
+
+export { GetProducto, GetProductById, GetProductById2, Paginacion, FiltroCategoria, PostProducto, cantidadProductosPorCategoria };

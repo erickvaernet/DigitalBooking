@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 public class CaracteristicaDTO {
     private Integer id;
     private String titulo;
-    // PREGUNTAR POR EL USO DE LA TABLA IMAGEN?
     private String urlImagen;
 
     public CaracteristicaDTO(String titulo, String urlImagen) {

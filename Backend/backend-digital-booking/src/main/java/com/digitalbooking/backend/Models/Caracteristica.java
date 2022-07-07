@@ -19,12 +19,5 @@ public class Caracteristica {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String titulo;
-    // PREGUNTAR POR EL USO DE LA TABLA IMAGEN?
     private String urlImagen;
-    /*
-    @ManyToMany(mappedBy = "caracteristicas")
-    private Set<Producto> productos;
-    */
-
-
 }
